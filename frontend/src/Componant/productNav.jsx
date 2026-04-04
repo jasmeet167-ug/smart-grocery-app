@@ -18,26 +18,26 @@ const ProductNav = ({ showBar, setData }) => {
   };
 
   const btnClass = `
-    whitespace-nowrap
     px-3 py-1.5
-    text-sm font-medium
+    text-sm md:text-base
+    font-semibold
     rounded-full
     bg-gray-200
     text-gray-800
     active:scale-95
-    active:bg-purple-400
+    active:bg-orange-300
     transition-all duration-150
   `;
 
   return (
     <div
       className="
-        flex gap-3 h-14 w-full
-        sticky top-0 z-50
-        items-center px-3
+        flex flex-wrap gap-2
+        w-full
+        sticky top-0 z-50 mt-12
+        items-center justify-center
+        px-2
         bg-white
-        overflow-x-auto
-        scrollbar-hide
       "
     >
       <button className={btnClass} onClick={() => filterCategory([])}>
@@ -45,15 +45,15 @@ const ProductNav = ({ showBar, setData }) => {
       </button>
 
       <button className={btnClass} onClick={() => filterCategory(['vegetable'])}>
- Vegetables
+        Vegetables
       </button>
 
       <button className={btnClass} onClick={() => filterCategory(['fruit'])}>
-         <FaAppleAlt />Fruits
+        <FaAppleAlt className="inline mr-1" /> Fruits
       </button>
 
       <button className={btnClass} onClick={() => filterCategory(['sweet'])}>
-        🍩 Sweet Tooth
+        🍩 Sweet
       </button>
 
       <button className={btnClass} onClick={() => filterCategory(['bakery'])}>
@@ -61,19 +61,20 @@ const ProductNav = ({ showBar, setData }) => {
       </button>
 
       <button className={btnClass} onClick={() => filterCategory(['masala'])}>
-        🌶️ Masala & Oil
+        🌶️ Masala
       </button>
 
       <button className={btnClass} onClick={() => filterCategory(['dairy'])}>
-        🧀 Dairy & Bread
+        🧀 Dairy
       </button>
 
-      <button className={btnClass} onClick={() => filterCategory(['drinks'])}>
+      {/* ⚠️ yaha fix kiya */}
+      <button className={btnClass} onClick={() => filterCategory(['drink'])}>
         🥤 Drinks
       </button>
 
       <button className={btnClass} onClick={() => filterCategory(['atta'])}>
-        🌾 Atta & Dal
+        🌾 Atta
       </button>
     </div>
   );

@@ -42,7 +42,7 @@ function Cart({ cart = [], setCart }) {
       <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
       {cart.length === 0 ? (
-        <p className="text-lg">Cart is empty 😢</p>
+        <p className="text-lg">Cart is empty </p>
       ) : (
         <>
           {cart.map(item => (

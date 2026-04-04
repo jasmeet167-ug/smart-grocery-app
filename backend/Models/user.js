@@ -3,37 +3,35 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true 
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
-  isVerified: {
-    type: Boolean,
-    default: false
+  isVerified:{
+    type:Boolean,
+    default:false
   },
+    
   isLoggedIn: {
-    type: Boolean,
-    default: false
+  type: Boolean,
+  default: false
+},
+  otp:{
+    type:String,
+    default:null
   },
-  otp: {
-    type: String,
-    default: null
+  otpExpiry:{      // ✅ spelling fixed
+    type:Date,
+    default:null
   },
-  otpExpiry: {
-    type: Date,
-    default: null
-  }
-}, {
-  timestamps: true
+},
+{
+  timestamps:true
 });
 
 const userModels = mongoose.model("users", UserSchema);

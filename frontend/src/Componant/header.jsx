@@ -3,9 +3,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosSearch } from "react-icons/io";
 import { FaLongArrowAltLeft } from "react-icons/fa";
-import { MdShoppingCart } from "react-icons/md";
+import { MdShoppingCart, MdOutlineDarkMode, MdLightMode } from "react-icons/md";
 
-function Header({ cart }) { 
+function Header({ cart, dark, setDark }) {
   const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
   const [isOpen, setOpen] = useState(false);
@@ -13,9 +13,7 @@ function Header({ cart }) {
   const location = useLocation();
   const [search, setSearch] = useState("");
 
-  const navigator = () => navigate(-1);
-
-  const handleSumbit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!search.trim()) return;
     navigate(`/search/${search}`);
@@ -24,96 +22,121 @@ function Header({ cart }) {
 
   return (
     <>
-      <div className="w-full h-16 px-4">
+      {/* NAVBAR */}
+      <div className="w-full h-16 px-3 sm:px-6 shadow-md bg-white">
         <nav className="flex justify-between items-center h-full">
 
-          {location.pathname !== "/" && (
-            <button onClick={navigator} className="md:hidden">
-              <FaLongArrowAltLeft className="text-black" />
-            </button>
-          )}
+          {/* LEFT */}
+          <div className="flex items-center gap-2">
+            {location.pathname !== "/" && (
+              <button onClick={() => navigate(-1)} className="sm:hidden">
+                <FaLongArrowAltLeft size={20} />
+              </button>
+            )}
 
-          <img
-            src="logo.png"
-            alt="logo"
-            className="h-15 w-24 pt-3 object-contain drop-shadow-2xl"
-          />
+            <img
+              src="logo.png"
+              alt="logo"
+                className="h-12 sm:h-14 md:h-16 w-auto object-contain drop-shadow-md"
 
-          {/* Desktop Search */}
-          <div className="justify-center hidden sm:flex flex-1">
-            <div className="relative w-full flex justify-center">
-              <IoIosSearch className="text-black text-2xl absolute left-[26%] top-2" />
-              <form onSubmit={handleSumbit} className="w-full flex justify-center">
-                <input
-                  type="text"
-                  placeholder="search the products...."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="border-2 border-gray-200 w-1/2 rounded-md bg-gray-100 px-5 pl-9 h-10 outline-none"
-                />
-              </form>
-            </div>
+            />
           </div>
 
-          {/* Menu */}
-          <div className="hidden sm:flex items-center gap-5">
-            <ul className="flex gap-6 text-gray-800">
-              <li><Link to="/" className="hover:text-green-600">Home</Link></li>
-              <li><Link to="/product" className="hover:text-green-600">Product</Link></li>
-            </ul>
-             <Link to="/login">
-              <button className="bg-blue-600 text-white px-3 py-1 rounded">
-              Login
-            </button>
-             </Link>
-           
+          {/* SEARCH (DESKTOP) */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <form onSubmit={handleSubmit} className="relative w-1/2">
+              <IoIosSearch className="absolute left-3 top-3 text-xl" />
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-10 pr-3 h-10 border rounded-md bg-gray-100 outline-none"
+              />
+            </form>
+          </div>
 
-            {/* Cart Icon */}
+          {/* RIGHT */}
+          <div className="flex items-center gap-3 sm:gap-5">
+
+            {/* DARK MODE */}
+            <div
+              onClick={() => setDark(!dark)}
+              className={`w-14 h-7 flex items-center rounded-full p-1 cursor-pointer transition
+              ${dark ? "bg-gray-800" : "bg-gray-400"}`}
+            >
+              <div
+                className={`bg-white w-5 h-5 rounded-full flex items-center justify-center transform transition
+                ${dark ? "translate-x-7" : "translate-x-0"}`}
+              >
+                {dark ? (
+                  <MdLightMode size={12} className="text-yellow-400" />
+                ) : (
+                  <MdOutlineDarkMode size={12} className="text-orange-400" />
+                )}
+              </div>
+            </div>
+
+            {/* DESKTOP MENU */}
+            <div className="hidden sm:flex items-center gap-5">
+              <Link to="/" className="hover:text-green-600 font-semibold">Home</Link>
+              <Link to="/product" className="hover:text-green-600 font-semibold">Product</Link>
+
+              <Link to="/login">
+                <button className="bg-blue-600 text-white px-3 py-1 rounded">
+                  Login
+                </button>
+              </Link>
+            </div>
+
+            {/* CART */}
             <Link to="/cart" className="relative">
-              <MdShoppingCart size={28} />
+              <MdShoppingCart className="text-2xl sm:text-3xl" />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 rounded-full">
+                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-[10px] px-1.5 py-[2px] rounded-full">
                   {cartCount}
                 </span>
               )}
             </Link>
-          </div>
 
-          {/* Hamburger */}
-          <button
-            onClick={() => setOpen(!isOpen)}
-            className="sm:hidden px-4 text-3xl text-black"
-          >
-            <RxHamburgerMenu />
-          </button>
+            {/* HAMBURGER */}
+            <button
+              onClick={() => setOpen(!isOpen)}
+              className="sm:hidden text-2xl"
+            >
+              <RxHamburgerMenu />
+            </button>
+
+          </div>
         </nav>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`${isOpen ? "block" : "hidden"} sm:hidden bg-gray-100 space-y-2 pb-3 absolute top-16 left-0 w-full z-50`}>
-        <ul className="text-gray-800 text-lg px-4 space-y-2">
-          <li><Link to="/" className="hover:text-green-600">Home</Link></li>
-          <li><Link to="/product" className="hover:text-green-600">Categories</Link></li>
-          <li><Link to="/cart" className="hover:text-green-600">My Orders</Link></li>
-          <li><Link to="/profile" className="hover:text-green-600">Profile</Link></li>
-        </ul>
-        <Link to="/login">
-        <button className="bg-blue-600 text-white px-4 py-1 rounded ml-4">
-          Login
-        </button>
-        </Link>
-      </div>
+      {/* MOBILE MENU */}
+      {isOpen && (
+        <div className="sm:hidden bg-gray-100 px-4 py-3 space-y-3 shadow-md">
+          <Link to="/" className="block">Home</Link>
+          <Link to="/product" className="block">Categories</Link>
+          <Link to="/cart" className="block">My Orders</Link>
+          <Link to="/profile" className="block">Profile</Link>
 
-      {/* Mobile Search */}
-      <div className="sm:hidden w-full flex pt-4 pb-4 justify-center px-4">
-        <form onSubmit={handleSumbit} className="relative w-full">
-          <IoIosSearch className="text-black text-2xl absolute left-3 top-3" />
+          <Link to="/login">
+            <button className="bg-blue-600 text-white px-4 py-1 rounded">
+              Login
+            </button>
+          </Link>
+        </div>
+      )}
+
+      {/* MOBILE SEARCH */}
+      <div className="md:hidden px-3 py-3">
+        <form onSubmit={handleSubmit} className="relative">
+          <IoIosSearch className="absolute left-3 top-3 text-xl" />
           <input
             type="text"
-            placeholder="search the products...."
+            placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border-2 border-gray-200 px-9 bg-gray-100 w-full rounded-md h-12 outline-none"
+            className="w-full pl-10 h-11 border rounded-md bg-gray-100 outline-none"
           />
         </form>
       </div>

@@ -6,7 +6,7 @@ import Product from './product'
 const Detaliproduct = ({ cart, setCart }) => {
 
   const { id } = useParams()
-  const [product, setProduct] = useState({})
+  const [product, setProduct] = useState({}) 
   const [relatedProducts, setRelatedProducts] = useState([])
 
   useEffect(() => {

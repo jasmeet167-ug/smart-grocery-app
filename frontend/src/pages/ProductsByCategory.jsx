@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Data from '../Componant/products'
 import Product from './product'
-const ProductsByCategory = () => {
+
+const ProductsByCategory = ({ cart, setCart }) => {   // ✅ ADD THIS
   const { cat } = useParams()
   const [filterData, setFilterData] = useState([])
 
@@ -14,7 +15,13 @@ const ProductsByCategory = () => {
   }, [cat])
 
   return (
-    <Product Data={filterData} showBar={true} setData={setFilterData} />
+    <Product 
+      Data={filterData} 
+      showBar={true} 
+      setData={setFilterData}
+      cart={cart}          // ✅ ADD THIS
+      setCart={setCart}    // ✅ ADD THIS
+    />
   )
 }
 

@@ -8,7 +8,7 @@ const sessionSchema = new Schema({
     ref: "users",
     required: true
   },
-  refreshToken: {
+  refreshToken: {    // ✅ ADD THIS
     type: String,
     required: true
   }

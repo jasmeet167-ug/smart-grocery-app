@@ -6,7 +6,7 @@ import connectDB from "./Models/db.js";
 import cors from "cors";
 import authRouter from "./Routes/authRoutes.js"
 const app = express();
-const PORT = process.env.PORT || 8070;
+const PORT = process.env.PORT || 8050;
 
 connectDB();
 
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Server is running ✅");
+  res.send("Server is running ");
 });
 
 app.use("/auth", authRouter);

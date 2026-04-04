@@ -1,79 +1,105 @@
 import React, { useState } from 'react'
-import axios from 'axios'
-import { useNavigate, Link } from 'react-router-dom'
-import { toast, ToastContainer } from 'react-toastify'
+import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import axios from 'axios'
 
 function Signup() {
+
   const navigate = useNavigate()
-  const [formData, setFormData] = useState({ email: '', password: '' })
 
-  const handleChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
 
-  const handleSubmit = async e => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
     try {
-      const res = await axios.post('http://localhost:8070/auth/signup', formData)
+      const res = await axios.post('http://localhost:8050/auth/signup', formData)
+
       toast.success(res.data.message)
-      setTimeout(() => navigate('/login'), 2000)
-    } catch (err) {
-      // ✅ Handle 409 Conflict error
-      if (err.response?.status === 409) {
-        toast.error('Email already registered. Please login.')
-      } else {
-        toast.error(err.response?.data?.message || 'Signup failed')
-      }
+
+      setTimeout(() => {
+        navigate('/')
+      }, 2000)
+
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Signup failed")
     }
   }
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white p-6 rounded shadow">
-        <h2 className="text-2xl font-bold mb-4 text-center">Signup</h2>
+    <div className="flex justify-center items-center h-screen bg-gray-100 ">
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+
+        <h1 className="text-3xl font-bold text-center mb-6 text-gray-700">
+          Signup
+        </h1>
+
+        <form className="space-y-4" onSubmit={handleSubmit}>
+
           <div>
-            <label>Email</label>
+            <label className="block text-gray-600 mb-1">
+              Email
+            </label>
             <input
-              type="email"
+              type='email'
               name="email"
-              placeholder="Enter your email"
+              autoComplete='email'
               value={formData.email}
               onChange={handleChange}
-              required
-              autoComplete="email" // ✅ add autocomplete
-              className="border p-2 w-full rounded"
+              autoFocus
+              placeholder='Enter your email'
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
           <div>
-            <label>Password</label>
+            <label className="block text-gray-600 mb-1">
+              Password
+            </label>
             <input
-              type="password"
+              type='password'
               name="password"
-              placeholder="Enter your password"
               value={formData.password}
               onChange={handleChange}
-              required
-              autoComplete="new-password" // ✅ add autocomplete
-              className="border p-2 w-full rounded"
+              placeholder='Enter your password'
+               autoComplete="new-password"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
-          <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded">
+          <button
+            type="submit"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md transition duration-300"
+          >
             Signup
           </button>
+
+          <p className="text-sm text-center text-gray-600">
+            Already have an account?
+            <Link
+              to="/login"
+              className="text-blue-500 ml-1 hover:underline"
+            >
+              Login
+            </Link>
+          </p>
+
         </form>
 
-        <p className="mt-4 text-center text-sm">
-          Already have an account?{' '}
-          <Link to="/login" className="text-blue-500 hover:underline">
-            Login
-          </Link>
-        </p>
-
         <ToastContainer />
+
       </div>
     </div>
   )
