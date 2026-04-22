@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.light {
+  background: white;
+  min-height: 100vh;
+}
+
+.dark {
+  background:rgb(152, 186, 152);
+  min-height: 100vh;
+}
