@@ -24,7 +24,7 @@ const Detaliproduct = ({ cart, setCart }) => {
     }
   }, [id])
 
-  // ✅ ADD TO CART FROM DETAIL PAGE
+  // ✅ ADD TO CART FROM DETAIL PAGE//     
   const addToCart = (product) => {
     const existing = cart.find(item => item.id === product.id)
 
@@ -60,6 +60,7 @@ const Detaliproduct = ({ cart, setCart }) => {
           {/* ✅ WORKING BUTTON */}
           <button
             onClick={() => addToCart(product)}
+            
             className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 w-fit"
           >
             Add to Cart

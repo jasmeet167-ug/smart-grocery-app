@@ -36,9 +36,9 @@ const Data = [
           { id: 25, title: "popcon", category: "bakery", price: 100, image: "/popcon.jpg" },
 
   //fruits//
-    { id: 19, title: "fruits", category:"fruits", price: 100, image: "/pinApple.jpg" },
-      { id: 20, title: "fruits", category: "fruits", price: 100, image: "/banana.png" },
-        { id: 21, title: "fruits", category: "fruits", price: 100, image: "/Strawberries.jpg" },
+    { id: 19, title: "pinApple", category:"fruit", price: 100, image: "/pinApple.jpg" },
+      { id: 20, title: "banana", category: "fruit", price: 100, image: "/banana.png" },
+        { id: 21, title: "Strawberries", category: "fruit", price: 100, image: "/Strawberries.jpg" },
 
 // Drinks
   { id: 22, title: "Drink", category: "drink", price: 40, image: "/Drink.png" },

@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom'
 import Data from '../Componant/products'
 import Product from './product'
 
-const ProductsByCategory = ({ cart, setCart }) => {   // ✅ ADD THIS
+const ProductsByCategory = ({ cart, setCart }) => {   
   const { cat } = useParams()
   const [filterData, setFilterData] = useState([])
 
   useEffect(() => {
     const filtered = Data.filter(
       (p) => p.category === cat
+      
     )
     setFilterData(filtered)
   }, [cat])
@@ -19,8 +20,8 @@ const ProductsByCategory = ({ cart, setCart }) => {   // ✅ ADD THIS
       Data={filterData} 
       showBar={true} 
       setData={setFilterData}
-      cart={cart}          // ✅ ADD THIS
-      setCart={setCart}    // ✅ ADD THIS
+      cart={cart}         
+      setCart={setCart}  
     />
   )
 }

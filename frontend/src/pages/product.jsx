@@ -52,13 +52,6 @@ function Product({ Data, showBar = true, setData, cart, setCart }) {
   >
     Add to Cart
   </button>
-
-  <button
-    
-    className='bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded w-full text-sm md:text-base'
-  >
-    Buy Now
-  </button>
 </div>
 
           </div>
