@@ -1,5 +1,6 @@
 import express from "express";
-import { signup, login, verifcation,logoutUser, forgotpassword, verifyOTP, chnagePassword} from "../Controllers/AuthControler.js";
+import { signup, login, forgotpassword, verifyOTP, changePassword } 
+from "../Controllers/AuthControler.js";
 
 import { authMiddleware, signupValidation } from "../Middlewares/AuthValidation.js";
 
@@ -11,10 +12,8 @@ router.get("/check", (req, res) => {
 
 router.post("/signup", signupValidation, signup);
 router.post("/login", login);
-router.get("/verify", verifcation);
-router.post("/logout", authMiddleware, logoutUser);
-router.post("/forgot-password",forgotpassword)
-router.post("/verify-otp",verifyOTP)
-router.post("/change-password",chnagePassword)
-export default router;
+router.post("/forgot-password", forgotpassword);
+router.post("/verify-otp", verifyOTP);
+router.post("/change-password", changePassword);
 
+export default router;

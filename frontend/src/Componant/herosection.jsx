@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
        <p className='max-w-md mx-auto md:mx-0 leading-relaxed text-gray-700'>Best quality fruits, vegetables and daily needs at great prices
         Fast delivery and trusted freshness, every single day.</p>
 
-       <Link to="/about"><button className=' border-2 border-orange-600  bg-orange-300 text-black px-6 py-3 w-fit text-sm rounded-xl hover:bg-orange-100 transition '>Explor more</button></Link>
+       <Link to="/product"><button className=' border-2 border-orange-600  bg-orange-300 text-black px-6 py-3 w-fit text-sm rounded-xl hover:bg-orange-100 transition '>Explor more</button></Link>
       </div>
 
       {/* image */}
