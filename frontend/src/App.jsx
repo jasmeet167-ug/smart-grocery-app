@@ -13,7 +13,7 @@ import ProductsByCategory from "./pages/ProductsByCategory";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
-import VerifyOTP from "./pages/VerifyOTP.jsx";
+import VerifyOTP from "./pages/VerifyOTP";
 import ChangePassword from "./pages/ChangePassword";
 
 const App = () => {
