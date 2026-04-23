@@ -17,14 +17,13 @@ function ChangePassword() {
 
     try {
       const res = await axios.post(
-        "http://localhost:8050/auth/change-password",
-        {
-          email,
-          newPassword,
-          comfirmPassword: confirmPassword
-        }
-      )
-
+  "http://localhost:8050/auth/change-password",
+  {
+    email,
+    newPassword,
+    confirmPassword   // ✅ fixed
+  }
+)
       toast.success(res.data.message)
 
       setTimeout(() => {
