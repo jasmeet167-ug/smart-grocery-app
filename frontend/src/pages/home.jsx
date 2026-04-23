@@ -1,12 +1,11 @@
 import React from 'react'
-import Herosection from '../Componant/herosection'
-import Category from '../Componant/Categorys'
+import Herosection from'../Components/herosection'
+import Category from '../Components/Category.jsx'
 function Home() {
   return (
     <>
   <Herosection/>
-      <Category/>
-      
+<Category/>      
     </>
   )
 }

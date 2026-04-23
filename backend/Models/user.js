@@ -25,7 +25,7 @@ const UserSchema = new Schema({
     type:String,
     default:null
   },
-  otpExpiry:{      // ✅ spelling fixed
+  otpExpiry:{  
     type:Date,
     default:null
   },

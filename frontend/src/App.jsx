@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Home from "./pages/home";
+import Home from "./pages/Home.jsx";
 import Product from "./pages/product";
-import Header from "./Componant/header";
-import Footer from "./Componant/footer";
+import Header from "./Components/Header.jsx";
+import Footer from "./Components/Footer.jsx";
 import Cart from "./pages/cart";
 import Detaliproduct from "./pages/Detaliproduct";
 import Search from "./pages/search";
-import Data from "./Componant/products";
+import Data from "./Components/products.js";
 import ProductsByCategory from "./pages/ProductsByCategory";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import ForgotPassword from "./pages/ForgotPassword";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
 import VerifyOTP from "./pages/VerifyOTP";
-import ChangePassword from "./pages/ChangePassword";
+import ChangePassword from "./pages/ChangePassword.jsx";
 
 const App = () => {
   const [data, setData] = useState([...Data]);

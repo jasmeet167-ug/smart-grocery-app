@@ -5,7 +5,7 @@ import { sendMail } from "../emilVerify/sendMail.js";
 import { Session } from "../Models/SessionModal.js";
 
 
-// ================= SIGNUP =================
+// SIGNUP //
 export const signup = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -42,7 +42,7 @@ export const signup = async (req, res) => {
 };
 
 
-// ================= LOGIN =================
+// LOGIN//
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -119,7 +119,7 @@ export const login = async (req, res) => {
 };
 
 
-// ================= VERIFY OTP =================
+//VERIFY OTP//
 export const verifyOTP = async (req, res) => {
   const { email, otp } = req.body;
 
@@ -172,7 +172,7 @@ export const verifyOTP = async (req, res) => {
 };
 
 
-// ================= FORGOT PASSWORD =================
+// FORGOT PASSWORD//
 export const forgotpassword = async (req, res) => {
   try {
     const { email } = req.body;
@@ -208,7 +208,7 @@ export const forgotpassword = async (req, res) => {
 };
 
 
-// ================= CHANGE PASSWORD =================
+//  CHANGE PASSWORD //
 export const changePassword = async (req, res) => {
   const { email, newPassword, confirmPassword } = req.body;
 
