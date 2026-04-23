@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-import Home from "./pages/Home.jsx";
+import Home from "./pages/home.jsx";
 import Product from "./pages/product";
 import Header from "./Components/Header.jsx";
 import Footer from "./Components/Footer.jsx";
