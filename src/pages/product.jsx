@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import ProductNav from '../Componant/productNav'
+import ProductNav from '../Components/productNav'
 
 function Product({ Data, showBar = true, setData, cart, setCart }) {
 

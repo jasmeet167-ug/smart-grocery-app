@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Data from '../Componant/products'
-import Product from './product'
+import Data from '../Components/products'
+import Product from './Product.jsx'
 
 const ProductsByCategory = ({ cart, setCart }) => {   
   const { cat } = useParams()
