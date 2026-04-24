@@ -6,7 +6,7 @@ import Product from "./pages/Product.jsx";
 import Header from "./Components/Header.jsx";
 import Footer from "./Components/Footer.jsx";
 import Cart from "./pages/Cart.jsx";
-import DetailProduct from "./pages/DetailProduct.jsx"; // ✅ FIXED
+import DetailProduct from "./pages/DetailProduct.jsx";
 import Search from "./pages/Search.jsx";
 import Data from "./Components/products.js";
 import ProductsByCategory from "./pages/ProductsByCategory.jsx";
